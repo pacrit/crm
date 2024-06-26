@@ -15,6 +15,10 @@ function Menu() {
     const [expanded, setExpanded] = React.useState(false);
     const [activeKey, setActiveKey] = React.useState('1');
     const navToLogin = useNavigate();
+    const navToConfig = useNavigate();
+    const navToHome = useNavigate();
+    const navToGroup = useNavigate();
+    const navToTasks = useNavigate();
     return (
         <div style={{ height: '100vh' }}> {/* Envolva o Sidenav em um div com altura de 100% da viewport */}
             <Sidenav
@@ -26,25 +30,25 @@ function Menu() {
                     onMouseLeave={() => setExpanded(false)}
                 >
                     <Nav activeKey={activeKey} onSelect={setActiveKey}>
-                        <Nav.Item eventKey="1" icon={<DashboardIcon />}>
+                        <Nav.Item onClick={() => { navToHome('/home') }} eventKey="1" icon={<DashboardIcon />}>
                             Home
                         </Nav.Item>
-                        <Nav.Item eventKey="2" icon={<GroupIcon />}>
+                        <Nav.Item onClick={()=>{navToGroup('/usergroup')}} eventKey="2" icon={<GroupIcon />}>
                             Grupo de Usuários
                         </Nav.Item>
                         <Nav.Item eventKey="3" icon={<MagicIcon />}>
                             Aplicação
                         </Nav.Item>
-                        <Nav.Item eventKey="4" icon={<GearCircleIcon />}>
+                        <Nav.Item onClick={() => { navToConfig('/config') }} eventKey="4" icon={<GearCircleIcon />}>
                             Configurações
                         </Nav.Item>
-                        <Nav.Item eventKey="5" icon={<DocPassIcon />}>
+                        <Nav.Item onClick={()=>{navToTasks('/tasks')}} eventKey="5" icon={<DocPassIcon />}>
                             Tarefas
                         </Nav.Item>
                         <Nav.Item eventKey="6" icon={<UserInfoIcon />}>
                             Perfil
                         </Nav.Item>
-                        <Nav.Item onClick={() => { navToLogin('/login') }} eventKey="7" icon={<OffIcon />}>
+                        <Nav.Item onClick={() => { navToLogin('/') }} eventKey="7" icon={<OffIcon />}>
                             LogOff
                         </Nav.Item>
                     </Nav>
