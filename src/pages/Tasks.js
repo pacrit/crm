@@ -1,5 +1,9 @@
+import { useEffect } from "react"
 import Menu from "./Menu";
 function Tasks() {
+    useEffect(() => {
+        localStorage.getItem('theme')
+    }, []);
     return (
         <div style={{ display: 'flex' }}>
             <Menu />
